@@ -27,9 +27,8 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
         return <option key={index} value={currency}>{currency}</option>
     });
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        let amount = event.target.currencyAmount.value
+    const handleAmountChange = async (event) => {
+        let amount = event.target.value
         let orderedResults = {}
         fetch(`https://api.exchangeratesapi.io/latest?base=${selectedCurrency}`)
         .then(res => res.json())
@@ -45,14 +44,14 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
 
     return ( 
         <div className='form-wrapper'>
-            <form className='currency-form' onSubmit={handleSubmit}>
+            <form className='currency-form'>
                 <label htmlFor='currencySymbol'>My Preferred Currency: </label>
                 <select name='currencySymbol' defaultValue='' onChange={handleSymbolChange} required >
                     <option value='' disabled>Select currency</option>
                     {currencyOptions}
                 </select>
                 <label htmlFor='currencyAmount'>Amount to convert: </label>
-                <input type='number' step='0.01' name='currencyAmount' placeholder='Enter amount...' required />
+                <input type='number' step='0.01' name='currencyAmount' placeholder='Enter amount...' onChange={handleAmountChange} required />
                 <button className='button' type='submit'>Convert</button>
             </form>
             {fetchError && alert('Failed to fetch data, please refresh the page and try again.')}
