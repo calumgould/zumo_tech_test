@@ -37,8 +37,10 @@ const App = () => {
     <div className="App">
       <h1>Currency Converter</h1>
       {fetchError && alert('Error fetching currencies, please refresh the page and try again')}
-      <CurrencyForm currencySymbols={currencySymbols} setResults={setResults} />
-      <CurrencyList results={results} />
+      <div className='currency-wrapper'>
+        <CurrencyForm currencySymbols={currencySymbols} setResults={setResults} />
+        <CurrencyList results={results} />
+      </div>
     </div>
   );
 }
