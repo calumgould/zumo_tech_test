@@ -1,1 +1,37 @@
+@font-face {
+    font-family: 'Avocado Thin';
+    src: local('AvocadoThin'), local('Avocado Thin'),
+        url('../assets/fonts/avocado_sans_thin.otf') 
+        format('opentype')
+}
+  
+@font-face {
+    font-family: 'Avocado Regular';
+    src: local('AvocadoRegular'), local('Avocado Regular'),
+        url('../assets/fonts/avocado_sans_regular.otf') 
+        format('opentype')
+}
+  
+@font-face {
+    font-family: 'Avocado Bold';
+    src: local('AvocadoBold'), local('Avocado Bold'),
+        url('../assets/fonts/avocado_sans_bold.otf') 
+        format('opentype')
+}
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+:root {
+    --primary: #faedf4;
+    --secondary: #d0609b;
+    --accent: #e56a82;
+    --background: #212121;
+    --header-text: 'Avocado Bold';
+    --subheader-text: 'Avocado Regular';
+    --body-text: 'Avocado Thin';
+}
+  
