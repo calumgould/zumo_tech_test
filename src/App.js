@@ -23,16 +23,6 @@ const App = () => {
     fetchCurrencySymbols();
   }, [])
 
-  useEffect(() => {
-    if (currencySymbols.length !== 0) {
-      console.log('fetch data', currencySymbols);
-    }
-  }, [currencySymbols])
-
-  useEffect(() => {
-    console.log('results', results);
-  }, [results])
-
   return (
     <div className="App">
       <h1>Currency Converter</h1>

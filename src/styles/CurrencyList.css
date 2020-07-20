@@ -1,3 +1,7 @@
+.list-wrapper {
+    width: 100%;
+}
+
 .currency-list {
     list-style: none;
     display: flex;

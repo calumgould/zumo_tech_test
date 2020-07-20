@@ -12,19 +12,25 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        let orderedResults = {}
         let preferredCurrency = event.target.currencySymbol.value
         fetch(`https://api.exchangeratesapi.io/latest?base=${preferredCurrency}`)
         .then(res => res.json())
-        .then(data => setResults(data.rates))
+        .then(data => {
+            Object.keys(data.rates).sort().forEach(key => {
+                orderedResults[key] = data.rates[key]
+            })
+            setResults(orderedResults);
+        })
         .catch(() => setFetchError(true));
     }
 
     return ( 
         <div className='form-wrapper'>
             <form className='currency-form' onSubmit={handleSubmit}>
-                <label htmlFor='currencySymbol'>My Currency: </label>
+                <label htmlFor='currencySymbol'>My Preferred Currency: </label>
                 <select name='currencySymbol' defaultValue='' required >
-                    <option value='' disabled>Select preferred currency</option>
+                    <option value='' disabled>Select currency</option>
                     {currencyOptions}
                 </select>
                 <label htmlFor='currencyAmount'>Amount to convert: </label>
