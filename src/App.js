@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import CurrencyInput from './components/CurrencyInput';
+import CurrencyForm from './components/CurrencyForm';
 import CurrencyList from './components/CurrencyList';
 
 import './styles/App.css';
@@ -37,7 +37,7 @@ const App = () => {
     <div className="App">
       <h1>Currency Converter</h1>
       {fetchError && alert('Error fetching currencies, please refresh the page and try again')}
-      <CurrencyInput currencySymbols={currencySymbols} setResults={setResults} />
+      <CurrencyForm currencySymbols={currencySymbols} setResults={setResults} />
       <CurrencyList results={results} />
     </div>
   );

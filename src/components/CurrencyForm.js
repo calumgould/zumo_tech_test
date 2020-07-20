@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CurrencyInput = ({currencySymbols, setResults}) => {
+const CurrencyForm = ({currencySymbols, setResults}) => {
 
     const [fetchError, setFetchError] = useState(false);
 
@@ -34,4 +34,4 @@ const CurrencyInput = ({currencySymbols, setResults}) => {
      );
 }
  
-export default CurrencyInput;
+export default CurrencyForm;
