@@ -51,12 +51,11 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
                 </select>
                 <label htmlFor='currencyAmount'>Amount to convert: </label>
                 <input type='number' step='0.01' name='currencyAmount' id='currency-amount' placeholder='Enter amount...' onChange={handleAmountChange} required />
-                <button className='button' type='submit'>Convert</button>
             </form>
-            {fetchError && alert('Failed to fetch data, please refresh the page and try again.')}
             <div className='flag-image-wrapper'>
                 <img src={flagURL || flagPlaceholder} alt='selected country flag' />
             </div>
+            {fetchError && alert('Failed to fetch data, please refresh the page and try again.')}
         </div>
      );
 }

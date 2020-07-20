@@ -11,6 +11,7 @@ const CurrencyList = ({results}) => {
     return ( 
         <div className='list-wrapper'>
             <h2>Results</h2>
+            {Object.keys(results).length === 0 && <h5>Select currency and enter amount to see results.</h5>}
             <ul className='currency-list'>
                 {mapResults}
             </ul>
