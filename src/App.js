@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/App.css';
 
-function App() {
+const App = () => {
+
+  const [data, setData] = useState({});
+  const [fetchError, setFetchError] = useState(false);
+
+  const fetchData = async () => {
+    fetch('https://api.exchangeratesapi.io/latest')
+      .then(res => res.json())
+      .then(data => setData(data))
+      .catch(() => setFetchError(true));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  useEffect(() => {
+    console.log('fetch data', data);
+  }, [data])
+
   return (
     <div className="App">
-      <h1>Currency Converter</h1>
+      <header>
+        <h1>Currency Converter</h1>
+      </header>
+      <body>
+
+      </body>
+      <footer>
+
+      </footer>
     </div>
   );
 }
