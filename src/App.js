@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import CurrencyInput from './components/CurrencyInput';
+import CurrencyList from './components/CurrencyList';
 
 import './styles/App.css';
 
 const App = () => {
 
+  const [results, setResults] = useState([])
   const [currencySymbols, setCurrencySymbols] = useState([])
   const [fetchError, setFetchError] = useState(false);
 
@@ -27,11 +29,16 @@ const App = () => {
     }
   }, [currencySymbols])
 
+  useEffect(() => {
+    console.log('results', results);
+  }, [results])
+
   return (
     <div className="App">
       <h1>Currency Converter</h1>
       {fetchError && alert('Error fetching currencies, please refresh the page and try again')}
-      <CurrencyInput currencySymbols={currencySymbols} />
+      <CurrencyInput currencySymbols={currencySymbols} setResults={setResults} />
+      <CurrencyList results={results} />
     </div>
   );
 }

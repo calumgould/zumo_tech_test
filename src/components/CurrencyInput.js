@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const CurrencyInput = ({currencySymbols}) => {
+const CurrencyInput = ({currencySymbols, setResults}) => {
 
-    const [results, setResults] = useState({})
     const [fetchError, setFetchError] = useState(false);
-
-    useEffect(() => {
-        console.log('results', results);
-    }, [results])
 
     const currencyOptions = currencySymbols.map((currency, index) => {
         return <option key={index} value={currency}>{currency}</option>
@@ -18,7 +13,7 @@ const CurrencyInput = ({currencySymbols}) => {
         let preferredCurrency = event.target.currencySymbol.value
         fetch(`https://api.exchangeratesapi.io/latest?base=${preferredCurrency}`)
         .then(res => res.json())
-        .then(data => setResults(data))
+        .then(data => setResults(data.rates))
         .catch(() => setFetchError(true));
     }
 
