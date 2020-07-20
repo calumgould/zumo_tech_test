@@ -6,12 +6,14 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
 
     const [fetchError, setFetchError] = useState(false);
     const [flagURL, setFlagURL] = useState('');
+    const [selectedCurrency, setSelectedCurrency] = useState('');
 
     useEffect(() => {
         
     }, [])
 
-    const findFlag = async (event) => {
+    const handleSymbolChange = async (event) => {
+        setSelectedCurrency(event.target.value)
         fetch(`https://restcountries.eu/rest/v2/currency/${event.target.value}`)
         .then(res => res.json())
         .then(data => {
@@ -27,14 +29,15 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        let amount = event.target.currencyAmount.value
         let orderedResults = {}
-        let preferredCurrency = event.target.currencySymbol.value
-        fetch(`https://api.exchangeratesapi.io/latest?base=${preferredCurrency}`)
+        fetch(`https://api.exchangeratesapi.io/latest?base=${selectedCurrency}`)
         .then(res => res.json())
         .then(data => {
             Object.keys(data.rates).sort().forEach(key => {
-                orderedResults[key] = data.rates[key]
+                orderedResults[key] = data.rates[key] * amount
             })
+            console.log('order', orderedResults);
             setResults(orderedResults);
         })
         .catch(() => setFetchError(true));
@@ -44,7 +47,7 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
         <div className='form-wrapper'>
             <form className='currency-form' onSubmit={handleSubmit}>
                 <label htmlFor='currencySymbol'>My Preferred Currency: </label>
-                <select name='currencySymbol' defaultValue='' onChange={findFlag} required >
+                <select name='currencySymbol' defaultValue='' onChange={handleSymbolChange} required >
                     <option value='' disabled>Select currency</option>
                     {currencyOptions}
                 </select>
@@ -53,7 +56,9 @@ const CurrencyForm = ({currencySymbols, setResults}) => {
                 <button className='button' type='submit'>Convert</button>
             </form>
             {fetchError && alert('Failed to fetch data, please refresh the page and try again.')}
-            <img src={flagURL} alt='selected country flag' />
+            <div className='flag-image-wrapper'>
+                <img src={flagURL} alt='selected country flag' />
+            </div>
         </div>
      );
 }

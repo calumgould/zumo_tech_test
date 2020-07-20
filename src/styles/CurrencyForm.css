@@ -1,5 +1,8 @@
 .form-wrapper {
-    width: 40%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }   
 
 .currency-form {
@@ -7,7 +10,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 90%;
+    width: 50%;
     margin: 0 auto;
     padding: 2em 3em;
     border-radius: 2em;
@@ -34,4 +37,12 @@
     outline: none;
     background-color: var(--accent);
     color: var(--primary);
-  }
+}
+
+.flag-image-wrapper {
+    width: 40%;
+}
+
+.flag-image-wrapper > img {
+    width: 100%;
+}
