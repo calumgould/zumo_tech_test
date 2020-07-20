@@ -15,7 +15,7 @@ const App = () => {
     fetch('https://api.exchangeratesapi.io/latest')
       .then(res => res.json())
       .then(data => setCurrencySymbols(Object.keys(data.rates)))
-      .then(() => setCurrencySymbols(currencySymbols => ['EUR', ...currencySymbols].sort()))
+      .then(() => setCurrencySymbols(currencySymbols => [...currencySymbols, 'EUR'].sort()))
       .catch(() => setFetchError(true));
   }
 
