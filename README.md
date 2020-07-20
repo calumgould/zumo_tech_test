@@ -4,9 +4,7 @@ This is an app to convert a chosen currency and amount into other major currenci
 
 ## Setup
 
-```
 Clone the repo locally
-```
 
 ```
 cd zumo_tech_test
