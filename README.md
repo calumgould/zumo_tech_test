@@ -1,6 +1,6 @@
 # Currency Converter
 
-This is an app to convert a chosen currency and amount into other major currencies, using current conversion rates from the [a link](https://exchangeratesapi.io/) API
+This is an app to convert a chosen currency and amount into other major currencies, using current conversion rates from the [Exchange Rates API](https://exchangeratesapi.io/).
 
 ## Setup
 
@@ -17,7 +17,7 @@ React | JavaScript, WebAPIs
 
 - User can select a currency to convert from.
 
-- Corresponding flag is displayed next to chosen currency (using the [a link](https://restcountries.eu/) API)
+- Corresponding flag is displayed next to chosen currency (using the [Rest Counties API](https://restcountries.eu/))
 
 - Real-time conversion updates as the amount of currency is changed.
 
