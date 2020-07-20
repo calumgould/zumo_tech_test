@@ -1,0 +1,48 @@
+.form-wrapper {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+
+.currency-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+    padding: 2em 3em;
+    border-radius: 2em;
+    background-color: var(--background);
+    border: 3px solid var(--accent);
+}
+
+.currency-form > input, .currency-form > select {
+    padding: 0.5em 1em;
+    border: 0;
+    border-radius: 2em;
+    width: 100%;
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+.button {
+    font-family: var(--subheader-text);
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    border-radius: 4em;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.flag-image-wrapper {
+    width: 40%;
+}
+
+.flag-image-wrapper > img {
+    width: 100%;
+}
