@@ -25,6 +25,11 @@
     width: 100%;
     font-size: 1.2em;
     margin: 1em 0;
+    outline: none;
+}
+
+.currency-form > select {
+    cursor: pointer;
 }
 
 .button {
