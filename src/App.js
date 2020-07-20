@@ -1,39 +1,41 @@
 import React, { useState, useEffect } from 'react';
+
+import CurrencyInput from './components/CurrencyInput';
+
 import './styles/App.css';
 
 const App = () => {
 
-  const [data, setData] = useState({});
+  const [currencySymbols, setCurrencySymbols] = useState([])
   const [fetchError, setFetchError] = useState(false);
 
-  const fetchData = async () => {
+  const fetchCurrencySymbols = async () => {
     fetch('https://api.exchangeratesapi.io/latest')
       .then(res => res.json())
-      .then(data => setData(data))
+      .then(data => setCurrencySymbols(Object.keys(data.rates)))
+      .then(() => setCurrencySymbols(currencySymbols => ['EUR', ...currencySymbols].sort()))
       .catch(() => setFetchError(true));
   }
 
   useEffect(() => {
-    fetchData();
+    fetchCurrencySymbols();
   }, [])
 
   useEffect(() => {
-    console.log('fetch data', data);
-  }, [data])
+    if (currencySymbols.length !== 0) {
+      console.log('fetch data', currencySymbols);
+    }
+  }, [currencySymbols])
 
   return (
     <div className="App">
-      <header>
-        <h1>Currency Converter</h1>
-      </header>
-      <body>
-
-      </body>
-      <footer>
-
-      </footer>
+      <h1>Currency Converter</h1>
+      {fetchError && alert('Error fetching currencies, please refresh the page and try again')}
+      <CurrencyInput currencySymbols={currencySymbols} />
     </div>
   );
 }
 
 export default App;
+
+
