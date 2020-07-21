@@ -41,6 +41,7 @@
 
 - More indepth error handling than just a basic `alert`
 
+- Add some basic info for the selected currency in addition to the flag, e.g. other countries that use the currency, symbol, etc. (All of that is available in the [Rest Counties API](https://restcountries.eu/) used earlier)
 
 ### Bugs
 
