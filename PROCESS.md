@@ -43,6 +43,8 @@
 
 - Add some basic info for the selected currency in addition to the flag, e.g. other countries that use the currency, symbol, etc. (All of that is available in the [Rest Counties API](https://restcountries.eu/) used earlier)
 
+- Extra styling to make flag images a consistent size to avoid other page elements shifting around
+
 ### Bugs
 
 - Had an issue with the [Rest Counties API](https://restcountries.eu/)) where I was searching for the corresponding country based on the currency symbol since that is the only data I had access to, which sometimes caused the API to return objects for multiple countries that used that currency. To solve this I filtered the result to only give me the country with the largest population then used the flag image of that country to represent that currency. This worked for the most part, however for 'EUR' the country with the largest population was Germany so the German flag is displayed, when it would be probably be more appropiate to display the EU flag instead.
